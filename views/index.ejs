@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Movie table</title>
+</head>
+<style>
+  body{
+    background-color: #011d44;
+  }
+</style>
+<body >
+<div class="container" id="root">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card body p-0">
+          <table class="table">
+            <thead class="thead-light">
+            <tr>
+              <th>Name</th>
+              <th>Genre</th>
+              <th>IMDb Rating</th>
+              <th>Overview</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="movie in movies">
+
+              <td>{{movie.name}}</td>
+              <td>{{movie.Genre}}</td>
+              <td>{{movie.IMDb_rating}}</td>
+              <td>{{movie.overview}}</td>
+              <td><button @click="removeMovie(movie._id)" class="btn btn-danger">Remove</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "#root",
+        data: {
+            movies:[]
+        },
+        methods: {
+            removeMovie:function(id){
+                axios.delete('/api/movies', {
+                    params:{
+                        id:id
+                    }
+                })
+            }
+        },
+        mounted:function(){
+            axios.get('/api/movies').then(function(response){
+                app.movies = response.data;
+            })
+        }
+    })
+</script>
+</body>
+</html>
