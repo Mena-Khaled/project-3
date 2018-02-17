@@ -1,0 +1,67 @@
+<div class="container "id="root">
+    <div class="row justify-content-center ">
+        <div v-for="item in movies" class="col-md-4 py-4">
+            <div class="card mx-1 my-4 box-shadow">
+                <img class="card-img-top img-thumbnail" :src="'https://image.tmdb.org/t/p/w600_and_h900_bestv2/' + item.path" alt="Card image cap">
+                <div class="card-body">
+                    <h2 style="color:#011d44" >#number {{item.id}}</h2>
+                    <h4 class="card-title text-info">{{item.name}}</h4>
+                    <h6><em> Genre : {{item.Genre}} </em></h6>
+                    <h6><em> IMDb rating : {{item.IMDb_rating}} </em></h6><br>
+                    <p class="card-text "><strong>{{item.overview}}</strong></p><br>
+                </div>
+            </div>
+        </div>
+        <div v-for="item in more" class="col-md-4 py-4">
+            <div class="card mx-1 my-4 box-shadow">
+                <img class="card-img-top img-thumbnail" :src="'https://image.tmdb.org/t/p/w600_and_h900_bestv2/' + item.path" alt="Card image cap">
+                <div class="card-body">
+                    <h2 style="color:#011d44" ></h2>
+                    <h4 class="card-title text-info">{{item.name}}</h4>
+                    <h6><em> Genre : {{item.Genre}} </em></h6>
+                    <h6><em> IMDb rating : {{item.IMDb_rating}} </em></h6><br>
+                    <p class="card-text "><strong>{{item.overview}}</strong></p><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <button class="btn btn-light btn-lg"><a href="http://localhost:3000/movies/add" style="color:#011d44">click here to add your top movies</a></button>
+
+    </div>
+</div>
+
+
+
+<footer class="blog-footer" style="text-align:center;color:white"><br>
+    <p>Blog template built for <a style="color:honeydew" href="https://getbootstrap.com/">Bootstrap</a> by Mena Khaled.</p>
+    <p>
+        <a style="color:honeydew" href="#">Back to top</a>
+    </p>
+</footer><br>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "#root",
+        data: {
+            movies : [],
+            more : []
+        },
+        mounted:function() {
+            axios.get('http://localhost:3000/myapi').then(function(response){
+                app.movies = response.data;
+            })
+            axios.get('/api/movies').then(function(response){
+                app.more = response.data;
+            })
+        },
+        methods: {
+        }});
+</script>

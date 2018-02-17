@@ -6,3 +6,20 @@ body {
 a {
   color: #00B7FF;
 }
+body {
+  align-items:center;
+  background: url("http://s4.thingpic.com/images/i2/akARNrm4WrFjYVXQXoJSFzbE.jpeg") no-repeat fixed center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position: center;
+  background-color: #011d44;
+}
+h1 {
+  text-align: center;
+  margin:20px;
+  padding-top: 15px;
+  color:black;
+}
+nav {
+  opacity: 0.5;
+}
