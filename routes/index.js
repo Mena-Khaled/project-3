@@ -68,6 +68,9 @@ router.get('/myapi', function (req, res) {
 router.get('/topmovies', function (req, res) {
     res.render('finalproject');
 });
+router.get('/second', function (req, res) {
+    res.render('second');
+});
 router.get('/api/movies', function (req, res) {
     Movie.find(function (error, movies) {
         res.json(movies);

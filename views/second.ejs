@@ -1,10 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Top Movies By IMDb</title>
+
+</head>
+<body >
 <div class="container "id="root">
     <div class="row justify-content-center ">
         <div v-for="item in movies" class="col-md-4 py-4">
             <div class="card mx-1 my-4 box-shadow">
                 <img class="card-img-top img-thumbnail" :src="'https://image.tmdb.org/t/p/w600_and_h900_bestv2/' + item.path" alt="Card image cap">
                 <div class="card-body">
-                    <h2 style="color:#011d44" >#number {{item.id}}</h2>
+                    <h2 >#number {{item.id}}</h2>
                     <h4 class="card-title text-info">{{item.name}}</h4>
                     <h6><em> Genre : {{item.Genre}} </em></h6>
                     <h6><em> IMDb rating : {{item.IMDb_rating}} </em></h6><br>
@@ -16,7 +30,6 @@
             <div class="card mx-1 my-4 box-shadow">
                 <img class="card-img-top img-thumbnail" :src="'https://image.tmdb.org/t/p/w600_and_h900_bestv2/' + item.path" alt="Card image cap">
                 <div class="card-body">
-                    <h2 style="color:#011d44" ></h2>
                     <h4 class="card-title text-info">{{item.name}}</h4>
                     <h6><em> Genre : {{item.Genre}} </em></h6>
                     <h6><em> IMDb rating : {{item.IMDb_rating}} </em></h6><br>
@@ -25,14 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <button class="btn btn-light btn-lg"><a href="http://localhost:3000/movies/add" style="color:#011d44">click here to add your top movies</a></button>
-
-    </div>
 </div>
-
-
-
 <footer class="blog-footer" style="text-align:center;color:white"><br>
     <p>Blog template built for <a style="color:honeydew" href="https://getbootstrap.com/">Bootstrap</a> by Mena Khaled.</p>
     <p>
@@ -65,3 +71,6 @@
         methods: {
         }});
 </script>
+
+</body>
+</html>
